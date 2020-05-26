@@ -1,0 +1,26 @@
+To source git repo tp google cloud repo - gcloud source repos clone github_pradhans0906_kubernates-gcp-demo --p
+
+swirch to the directory github_pradhans0906_kubernates-gcp-demo/
+   
+Build the image docker build -t my-image .
+configure docker to push or pull from container registry, you may need to enable container registry api as well - gcloud auth configure-docker
+Tag the image with the Gcloud registry, note the url may vary based on your project name - docker tag  ed08ecd9b5a3 gcr.io/quixotic-moment-252916/my-image:latest
+push the image - docker push gcr.io/quixotic-moment-252916/my-image:latest
+Verify it on the container registry
+
+scaling cluster and applications
+gcloud container clusters resize - cloud container clusters resize <your cluster name - standard-cluster-1> --zone us-central1-a --node-pool default-pool  --num-no
+des=8 
+
+kubectl scale deployments nginx-1 --replicas 4
+
+
+upgrade your master node command line - gcloud container clusters upgrade standard-cluster-1 --zone us-central1-a  --master --cluster-version 1.14.
+3-gke.11
+Master of cluster [standard-cluster-1] will be upgraded from version
+[1.13.7-gke.8] to version [1.14.3-gke.11]. This operation is
+long-running and will block other operations on the cluster (including
+ delete) until it has run to completion.
+Do you want to continue (Y/n)?
+
+Upgrade your workers node - gcloud container clusters upgrade standard-cluster-1 
